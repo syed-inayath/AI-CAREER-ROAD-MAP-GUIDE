@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #080808; /* Deep linear-like dark */
+  --color-foreground: #fafafa;
+  --color-card: rgba(255, 255, 255, 0.03);
+  --color-card-border: rgba(255, 255, 255, 0.08);
+  --color-primary: #3b82f6;
+  --color-accent: #8b5cf6;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-fira-sans), sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Custom WebKit Scrollbar - UI/UX Pro Max */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  /* Input autofill fix for dark mode */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover, 
+  input:-webkit-autofill:focus, 
+  input:-webkit-autofill:active{
+      -webkit-box-shadow: 0 0 0 30px #0f0f13 inset !important;
+      -webkit-text-fill-color: white !important;
+      transition: background-color 5000s ease-in-out 0s;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-[var(--color-card)] backdrop-blur-xl border border-[var(--color-card-border)];
+  }
+  .glass-neon {
+    @apply bg-[var(--color-card)] backdrop-blur-xl border border-[var(--color-card-border)] shadow-[0_0_15px_rgba(59,130,246,0.1)];
+  }
+  .text-glow {
+    text-shadow: 0 0 20px rgba(255,255,255,0.2);
+  }
+}
