@@ -6,8 +6,12 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from api.routes import router as api_router
 from dotenv import load_dotenv
+from db.database import Base, engine
 
 load_dotenv()
+
+# Ensure database tables are created (critical for Vercel /tmp sqlite database)
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="CareerAI Pro API",
